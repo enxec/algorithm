@@ -18,6 +18,7 @@ public class Qu001 {
 		else {
 			System.out.println((A/(C-B))+1);
 		}
+		
+		scn.close();
 	}
-
 }
