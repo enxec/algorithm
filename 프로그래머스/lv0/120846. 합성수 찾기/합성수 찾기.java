@@ -1,17 +1,7 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-        for(int i=2;i<=n;i++){
-            int temp=0;
-            for(int j=i;j>=1;j--){
-                if (i%j==0) { temp++; 
-                    if(temp>2) {
-                        answer++;
-                        break;
-                    }}
-            }
-            temp=0;
-        }
-        return answer;
+        return (int) IntStream.rangeClosed(1, n).filter(i -> (int) IntStream.rangeClosed(1, i).filter(i2 -> i % i2 == 0).count() > 2).count();
     }
 }
