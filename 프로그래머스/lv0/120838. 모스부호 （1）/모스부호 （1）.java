@@ -4,8 +4,8 @@ class Solution {
                 "--.","....","..",".---","-.-",".-..","--","-.",
                 "---",".--.","--.-",".-.","...","-","..-","...-",
                 ".--","-..-","-.--","--.."};
-        String[] morseString;
-        morseString = letter.split(" ");
+         
+        String[] morseString = letter.split(" ");
 
         StringBuilder sb = new StringBuilder();
         for (String word : morseString) {
