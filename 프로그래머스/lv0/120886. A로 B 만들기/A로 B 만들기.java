@@ -1,18 +1,12 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 
 class Solution {
     public int solution(String before, String after) {
-        int answer = 0;
-        List<Character> beforeList = before.chars().mapToObj(c -> (char)c).collect(Collectors.toList());
-        List<Character> afterList = after.chars().mapToObj(c -> (char)c).collect(Collectors.toList());
+        char[] a = before.toCharArray();
+        char[] b = after.toCharArray();
+        Arrays.sort(a);
+        Arrays.sort(b);
 
-        beforeList.sort(null);
-        afterList.sort(null);
-
-        if (afterList.equals(beforeList)) {
-            answer = 1;
-        }
-        return answer;
+        return new String(a).equals(new String(b)) ? 1 :0;
     }
 }
