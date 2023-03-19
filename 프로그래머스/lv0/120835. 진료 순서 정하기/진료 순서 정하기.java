@@ -1,18 +1,11 @@
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 class Solution {
     public int[] solution(int[] emergency) {
-        int[] asc = emergency.clone();
-        int[] answer = new int[emergency.length];
-        
-        Arrays.sort(asc);
-
-        for(int i=0; i<=emergency.length-1; i++) {
-            for(int j=0; j<=emergency.length-1; j++) {
-                if(asc[i]==emergency[j]) {
-                    answer[j]=emergency.length-i;
-                }
-            }
-        }
-        return answer;
+        return Arrays.stream(emergency)
+                     .map(i -> Arrays.stream(emergency).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toList()).indexOf(i) + 1).toArray();
     }
 }
