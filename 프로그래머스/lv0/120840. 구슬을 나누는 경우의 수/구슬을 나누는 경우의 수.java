@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 class Solution {
     public long solution(int balls, int share) {
         long answer = 0;
@@ -7,6 +5,6 @@ class Solution {
         int d = (balls - share) > share ? share : balls - share;
         if (d == 0) return 1;
 
-        return solution(balls - 1, d - 1) * balls / d;
+        return balls * solution(balls - 1, d - 1) / d;
     }
 }
