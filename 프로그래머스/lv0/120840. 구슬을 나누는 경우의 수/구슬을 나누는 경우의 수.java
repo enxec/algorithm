@@ -1,16 +1,12 @@
 import java.math.BigInteger;
 
 class Solution {
-    public BigInteger solution(int balls, int share) {
-        BigInteger[] fac = new BigInteger[31];
-        fac[0] = new BigInteger("1");
-        fac[1] = new BigInteger("1");
+    public long solution(int balls, int share) {
+        long answer = 0;
 
-        for (int i = 2; i <= 30; i++) {
-            fac[i] = fac[i - 1].multiply(new BigInteger(Integer.toString(i)));
-        }
+        int d = (balls - share) > share ? share : balls - share;
+        if (d == 0) return 1;
 
-        return (fac[balls].divide(fac[balls - share].multiply(fac[share])));
-
+        return solution(balls - 1, d - 1) * balls / d;
     }
 }
