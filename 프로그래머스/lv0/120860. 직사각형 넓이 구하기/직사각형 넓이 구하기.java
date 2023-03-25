@@ -1,6 +1,6 @@
 class Solution {
     public int solution(int[][] dots) {
-         int w = 0;
+        int w = 0;
         int h = 0;
         int x = dots[0][0];
         int y = dots[0][1];
