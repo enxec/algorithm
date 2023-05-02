@@ -1,18 +1,17 @@
+import java.util.*;
+
 class Solution {
     public int solution(int[][] lines) {
-        int answer = 0;
-        int[] arr = new int[200];
+        Map<Integer, Integer> map = new HashMap<>();
         
-        for(int i = 0; i < lines.length; i++) {
-            for(int j = lines[i][0] + 100; j < lines[i][1] + 100; j++) {
-                arr[j]++;
+        for (int[] line : lines) {
+            int from = Math.min(line[0], line[1]);
+            int to = Math.max(line[0], line[1]);
+            for (int i = from; i < to; i++) {
+                map.merge(i, 1, Integer::sum);
             }
         }
-        
-        for(int i = 0; i < 200; i++) {
-            if(arr[i] > 1)
-                answer++;
-        }
-        return answer;
+
+        return (int) map.values().stream().filter(i -> i > 1).count();
     }
 }
