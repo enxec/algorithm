@@ -1,13 +1,11 @@
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+
 class Solution {
     public int solution(String myString, String pat) {
-        int answer = 0;
-        
-        String replacedString = myString.replace('A', 'X').replace('B', 'A').replace('X', 'B');
-        
-        if (replacedString.contains(pat)) {
-            answer = 1;
-        }
-        
-        return answer;
+        return myString.contains(Stream.of(pat.split(""))
+                                       .map(str -> "A".equals(str) ? "B" : "A")
+                                       .collect(Collectors.joining())
+                                ) ? 1 : 0;
     }
 }
